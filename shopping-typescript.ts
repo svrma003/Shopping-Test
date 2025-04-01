@@ -26,10 +26,12 @@ function totalCostOfItems(items: string[]): string {
                 totalCost += itemsFreq[item] * costOfItems[item]; // no offer on these items
                 break;
             case 'Melon':
-                totalCost += (Math.floor(itemsFreq[item] / 2) * costOfItems[item]) + (itemsFreq[item] % 2 * costOfItems[item]); // buy one get one free offer
+                // buy one get one free offer => (each pair of items = 1 item cost) + remainder items cost
+                totalCost += (Math.floor(itemsFreq[item] / 2) * costOfItems[item]) + (itemsFreq[item] % 2 * costOfItems[item]);
                 break;
             case 'Lime':
-                totalCost += (Math.floor(itemsFreq[item] / 3) * 2 * costOfItems[item]) + (itemsFreq[item] % 3 * costOfItems[item]); // three for the price of two offer
+                // three for the price of two offer => (each group of 3 = 2 items cost) + remainder items cost
+                totalCost += (Math.floor(itemsFreq[item] / 3) * 2 * costOfItems[item]) + (itemsFreq[item] % 3 * costOfItems[item]);
                 break;
             default:
                 break;
